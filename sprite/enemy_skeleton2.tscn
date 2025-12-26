@@ -1,6 +1,7 @@
-[gd_scene load_steps=56 format=3 uid="uid://c6p6d2rb65mpk"]
+[gd_scene load_steps=58 format=3 uid="uid://c6p6d2rb65mpk"]
 
 [ext_resource type="Texture2D" uid="uid://f4rrj7hewjkv" path="res://asset/Enemy_Animations_Set/Enemy_Animations_Set/enemies-skeleton1_idle.png" id="1_hwvoa"]
+[ext_resource type="Script" uid="uid://bdvj6k1dqwfc" path="res://script/enemy_basic.gd" id="1_pqbf1"]
 [ext_resource type="Texture2D" uid="uid://vrs6nfp428xa" path="res://asset/Enemy_Animations_Set/Enemy_Animations_Set/enemies-skeleton1_attack.png" id="1_w7cbb"]
 [ext_resource type="Texture2D" uid="uid://b3gd2gg0tx864" path="res://asset/Enemy_Animations_Set/Enemy_Animations_Set/enemies-skeleton1_death.png" id="2_t7i6o"]
 [ext_resource type="Texture2D" uid="uid://luan7h6g6c5h" path="res://asset/Enemy_Animations_Set/Enemy_Animations_Set/enemies-skeleton1_take_damage.png" id="3_0rueq"]
@@ -364,17 +365,32 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rueq"]
+radius = 4.0
+height = 14.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0w5ho"]
 radius = 4.0
 height = 14.0
 
-[node name="enemy_skeleton2" type="Node2D"]
+[node name="enemy_skeleton2" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_pqbf1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1i7kr")
 animation = &"death"
 autoplay = "idle"
 frame_progress = 0.009937243
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 6)
+shape = SubResource("CapsuleShape2D_0rueq")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(5, -1)
+target_position = Vector2(0, 20)
+collision_mask = 2
 
 [node name="killzone" parent="." instance=ExtResource("6_fuw2d")]
 
