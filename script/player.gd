@@ -4,8 +4,8 @@ extends CharacterBody2D
 
 var is_dead := false
 
-const SPEED = 90.0
-const JUMP_VELOCITY = -230.0
+const SPEED = 140.0
+const JUMP_VELOCITY = -250.0
 
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)

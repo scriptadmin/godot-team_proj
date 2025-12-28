@@ -38,5 +38,5 @@ func _reverse_direction() -> void:
 	killzone_shape.position.x = -abs(killzone_shape.position.x) * direction
 
 func _update_raycast() -> void:
-	raycast.position = Vector2(0, 0)
-	raycast.target_position = Vector2(direction * 20, 32)
+	raycast.position = Vector2(direction * 20, 3)
+	raycast.target_position = Vector2(direction * 10, 25)
